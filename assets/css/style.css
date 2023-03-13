@@ -4,7 +4,8 @@
   --primary-text-color: #4d6321;
   --secondary-text-color: #3f4d21;
   --primary-background-color: #FFE9ED;
-  --icon-color: #20671E;
+  /* --icon-color: #20671E; */
+  --icon-color: #00c853;
 
 }
 /*-----General*-----*/
@@ -193,7 +194,7 @@ h6 {
   justify-content: space-between;
   padding: 10px 0 10px 30px;
   font-size: 15px;
-  font-weight: 500;
+  font-weight: 600;
   font-family: "Poppins", sans-serif;
   color: var(--primary-text-color);
   white-space: nowrap;
@@ -257,7 +258,7 @@ h6 {
 .navbar .dropdown ul a {
   padding: 10px 20px;
   font-size: 14px;
-  font-weight: 500;
+  font-weight: 200;
   text-transform: none;
   color: #01036f;
 }
@@ -456,12 +457,15 @@ h6 {
 #hero h1 span {
   color: var(--primary-text-color);
   /* border-bottom: 4px solid #1acc8d; */
+  transition: 0.5s;
+
 }
 
 #hero h2 {
   color: var(--primary-text-color);
   margin-bottom: 40px;
   font-size: 24px;
+  font-weight: 600;
 }
 
 #hero .btn-get-started {
