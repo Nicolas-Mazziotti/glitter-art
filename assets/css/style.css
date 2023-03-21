@@ -451,21 +451,33 @@ h6 {
   font-size: 48px;
   font-weight: 700;
   line-height: 56px;
-  color: var(--primary-text-color);
+  color: var(--secondary-text-color);
+
 }
 
 #hero h1 span {
-  color: var(--primary-text-color);
+  color: var(--secondary-text-color);
+  font-weight: 500;
   /* border-bottom: 4px solid #1acc8d; */
-  transition: 0.5s;
-
+  animation: pendulo 5s infinite;
+  display: inline-block; /* para que tome la animacion del span */
+  transform: rotateZ();
 }
+/* @keyframes pendulo {
+  from{
+    transform: rotateZ(0deg)
+  }
+  to{
+    transform: rotateZ(10deg);
+  } */
+/* } */
+
 
 #hero h2 {
   color: var(--primary-text-color);
   margin-bottom: 40px;
   font-size: 24px;
-  font-weight: 600;
+  font-weight: 500;
 }
 
 #hero .btn-get-started {
@@ -908,6 +920,8 @@ section {
 }
 
 
+
+
 /*--------------------------------------------------------------
 # Details Packs
 --------------------------------------------------------------*/
@@ -942,6 +956,15 @@ section {
 
 .details .content p:last-child {
   margin-bottom: 0;
+}
+
+.details .btn-packs {
+  background-color: var(--primary-background-color);
+  color: var(--icon-color);
+  padding: 2px;
+  border-style: none;
+  border-radius: 10px;
+  text-decoration: underline;
 }
 
 /*--------------------------------------------------------------
@@ -1179,6 +1202,12 @@ section {
 
 .contact .php-email-form input {
   height: 44px;
+}
+.contact .php-email-form select {
+  border-radius: 0;
+  height: 44px;
+  box-shadow: none;
+  font-size: 14px;
 }
 
 .contact .php-email-form textarea {
