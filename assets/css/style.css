@@ -6,8 +6,8 @@
   --primary-background-color: #FFE9ED;
   /* --icon-color: #20671E; */
   --icon-color: #00c853;
-
 }
+
 /*-----General*-----*/
 body {
   font-family: "Open Sans", sans-serif;
@@ -436,7 +436,8 @@ h6 {
 
 #hero:before {
   content: "";
-  background: var(--primary-background-color);
+  /* background: var(--primary-background-color); */
+  background: #fca1b2;
   opacity: 0.5;
   position: absolute;
   bottom: 0;
@@ -508,9 +509,9 @@ h6 {
 }
 
 
-#hero .animated {
-  /* animation: up-down 2s ease-in-out infinite alternate-reverse both; */
-}
+/* #hero .animated {
+  animation: up-down 2s ease-in-out infinite alternate-reverse both;
+} */
 
 #hero span{
   /* font-size: 40px; */
@@ -884,11 +885,15 @@ section {
   background-color: var(--primary-background-color);
 }
 
+.features div h3{
+  font-size: 18px;
+}
+
 .features .icon-box {
   display: flex;
   align-items: center;
   padding: 20px;
-  background: #f5f5ff;
+  background: var(--secondary-text-color);
   transition: ease-in-out 0.3s;
 }
 
@@ -904,19 +909,21 @@ section {
   padding: 0;
   line-height: 1;
   font-size: 16px;
+
 }
 
 .features .icon-box h3 a {
-  color: var(--secondary-text-color);
+  color: white;
   transition: ease-in-out 0.3s;
 }
 
 .features .icon-box h3 a:hover {
-  color: var(--primary-text-color);
+  color: black;
+  transition: ease-in-out 1s;
 }
 
 .features .icon-box:hover {
-  background: #ebebff;
+  background: var(--icon-color);
 }
 
 
@@ -966,6 +973,16 @@ section {
   border-radius: 10px;
   text-decoration: underline;
 }
+
+/* PACK MODALS */
+
+#standarModal #standarBody ul li   {
+  color: black;
+  list-style: none; 
+}
+#standarModal #standarBody ul li i {
+  color: var(--icon-color);
+} 
 
 /*--------------------------------------------------------------
 # Gallery
@@ -1151,46 +1168,9 @@ section {
   padding-bottom: 8px;
 }
 
-.contact .contact-form .error-message {
-  display: none;
-  color: #fff;
-  background: #ed3c0d;
-  text-align: left;
-  padding: 15px;
-  font-weight: 600;
-}
-
-.contact .contact-form .error-message br+br {
-  margin-top: 25px;
-}
-
-.contact .contact-form .sent-message {
-  display: none;
-  color: #fff;
-  background: #18d26e;
-  text-align: center;
-  padding: 15px;
-  font-weight: 600;
-}
-
-.contact .contact-form .loading {
-  display: none;
-  background: #fff;
-  text-align: center;
-  padding: 15px;
-}
-
-.contact .contact-form .loading:before {
-  content: "";
-  display: inline-block;
-  border-radius: 50%;
-  width: 24px;
-  height: 24px;
-  margin: 0 10px -6px 0;
-  border: 3px solid #18d26e;
-  border-top-color: #eee;
-  -webkit-animation: animate-loading 1s linear infinite;
-  animation: animate-loading 1s linear infinite;
+.contact .packs_notification {
+  color: red;
+  font-size: 15px;
 }
 
 .contact .contact-form input,

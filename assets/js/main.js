@@ -94,13 +94,15 @@
    */
   let backtotop = select('.back-to-top')
   if (backtotop) {
-    const toggleBacktotop = () => {
-      if (window.scrollY == 0) {
-        backtotop.classList.add('active')
-      } 
-    }
-    window.addEventListener('load', toggleBacktotop)
-    onscroll(document, toggleBacktotop)
+    backtotop.classList.add('active')
+    backtotop.setAttribute('href', 'https://api.whatsapp.com/send?phone=34611779228')
+    // const toggleBacktotop = () => {
+    //   if (window.scrollY == 0) {
+    //     backtotop.classList.add('active')
+    //   } 
+    // }
+    // window.addEventListener('load', toggleBacktotop)
+    // onscroll(document, toggleBacktotop)
   }
 
   /**
