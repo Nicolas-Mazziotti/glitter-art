@@ -1051,7 +1051,7 @@ section {
   right: 0;
   top: 0;
   bottom: 0;
-  background: rgba(44, 105, 25, 0.8);
+  background: rgba(247, 151, 167, 0.8);
 }
 
 .testimonials .section-header {
@@ -1126,7 +1126,7 @@ section {
 }
 
 .testimonials .swiper-pagination .swiper-pagination-bullet-active {
-  background-color: #2bb827;
+  background-color: rgba(128,128, 128, 0.8);
 }
 
 @media (min-width: 1024px) {
