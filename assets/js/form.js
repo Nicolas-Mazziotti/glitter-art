@@ -1,8 +1,12 @@
+// import sgMail from '@sendgrid/mail';
+// sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+
 
 const form = document.querySelector('.contact-form');
 console.log(form)
 const nameInput = document.querySelector('#name');
 const emailInput = document.querySelector('#email');
+const numberInput = document.querySelector('#number')
 const dateInput = document.querySelector('#date');
 const placeInput = document.querySelector('#place');
 const packsInput = document.querySelector('#packs');
@@ -76,12 +80,38 @@ console.log(arrValues)
 const getFormValues = () => {
   const name = nameInput.value
   const email = emailInput.value
+  const number = numberInput.value
   const date = dateInput.value
   const place = placeInput.value
   const pack = packsInput.value
   arrValues.push({ name, email, date, place, pack })
   console.log(arrValues)
+
 }
+
+
+//Sendgrid Config
+
+// const msg = {
+//   to: `${sgMail.setApiKey(process.env.FROM_EMAIL)}`,
+//   from: `xfasfa@gmail.com`, // Use the email address or domain you verified above
+//   subject: 'Sending with Twilio SendGrid is Fun',
+//   text: 'and easy to do anywhere, even with Node.js',
+//   html: '<strong>and easy to do anywhere, even with Node.js</strong>',
+// };
+
+// (async () => {
+//   try {
+//     await sgMail.send(msg);
+//   } catch (error) {
+//     console.error(error);
+
+//     if (error.response) {
+//       console.error(error.response.body)
+//     }
+//   }
+// })();
+
 
 // document.querySelector('#btn-submit').addEventListener('click', validateForm);
 form.addEventListener('submit', (e) => {

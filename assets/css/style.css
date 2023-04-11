@@ -6,6 +6,7 @@
   --primary-background-color: #FFE9ED;
   /* --icon-color: #20671E; */
   --icon-color: #00c853;
+  --test-color-icons: #f3d31f;
 }
 
 /*-----General*-----*/
@@ -425,7 +426,7 @@ h6 {
 --------------------------------------------------------------*/
 #hero {
   width: 100%;
-  background: url("../img/background-prueba1.avif");
+  background: url("../img/background-hero.avif");
   background-repeat: no-repeat;
   background-size: cover;
   position: relative;
@@ -498,13 +499,19 @@ h6 {
   background: var(--secondary-text-color) ;
 }
 
+@media only screen and (min-width: 1024px){
+  #hero .hero-img{
+    width: 400px;
+  }
+}
+
 #hero .hero-img img {
   width: 400px;
   border-radius: 30px;
   opacity: 0.9;
-  -webkit-box-shadow: 21px -19px 0px -8px rgba(63,77,33,0.67);
+  /* -webkit-box-shadow: 21px -19px 0px -8px rgba(63,77,33,0.67);
   -moz-box-shadow: 21px -19px 0px -8px rgba(63,77,33,0.67);
-  box-shadow: 21px -19px 0px -8px rgba(63,77,33,0.67);
+  box-shadow: 21px -19px 0px -8px rgba(63,77,33,0.67); */
 
 }
 
@@ -522,6 +529,10 @@ h6 {
 @media (min-width: 1024px) {
   #hero {
     background-attachment: fixed;
+  }
+  #hero #heroContainer{
+    height: 320px;
+    padding-top: 50px;
   }
 }
 
@@ -568,8 +579,13 @@ h6 {
 
 @media (max-width: 360px){
   #hero {
-    padding-top: 150px;
-    
+    padding-top: 120px;
+  }
+  #hero #heroContainer {
+    height: 450px;
+  }
+  #hero #heroContainer #hero-title-container{
+    padding-top: 40px;
   }
   #hero .hero-img img {
     width: 250px;
@@ -893,7 +909,7 @@ section {
   display: flex;
   align-items: center;
   padding: 20px;
-  background: var(--secondary-text-color);
+  background: rgb(248, 152, 168);
   transition: ease-in-out 0.3s;
 }
 
@@ -923,7 +939,7 @@ section {
 }
 
 .features .icon-box:hover {
-  background: var(--icon-color);
+  background: rgb(245, 161, 175);;
 }
 
 
@@ -981,6 +997,22 @@ section {
   list-style: none; 
 }
 #standarModal #standarBody ul li i {
+  color: var(--icon-color);
+} 
+
+#premiumModal #premiumBody ul li   {
+  color: black;
+  list-style: none; 
+}
+#premiumModal #premiumBody ul li i {
+  color: var(--icon-color);
+} 
+
+#glitterModal #glitterBody ul li   {
+  color: black;
+  list-style: none; 
+}
+#glitterModal #glitterBody ul li i {
   color: var(--icon-color);
 } 
 
