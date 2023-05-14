@@ -9,7 +9,7 @@ const numberInput = document.getElementById('input_number')
 const dateInput = document.getElementById('input_date');
 const placeInput = document.getElementById('input_place');
 const packsInput = document.getElementById('input_packs');
-const btnSubmit = document.getElementById('input_btn-submit')
+const btnSubmit = document.getElementById('btn-submit')
 
 
 //Expresiones Regulares para el formulario de Componentes
@@ -66,7 +66,7 @@ const validarInputs = (expresion, input, campo) => {
 }
 
 
-// let firbaseRef = firebase.da
+
 let arrValues = [];
 // Función para validar el formulario
 const sendForm = (e) => {
@@ -89,9 +89,11 @@ e.preventDefault()
       console.log(invalidInputs)
       invalidInputs[0].scrollIntoView({ behavior: "smooth" });
   } else {
-      sendEmailjs(arrValues)
+        sendEmailjs(arrValues);
+    };  
 }
-}
+
+
 
 
 const sendEmailjs = (arrValues) => {

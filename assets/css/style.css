@@ -512,9 +512,9 @@ h6 {
   width: 400px;
   border-radius: 30px;
   opacity: 0.9;
-  -webkit-box-shadow: 21px -19px 0px -8px rgba(63,77,33,0.67);
-  -moz-box-shadow: 21px -19px 0px -8px rgba(63,77,33,0.67);
-  box-shadow: 21px -19px 0px -8px rgba(63,77,33,0.67);
+  -webkit-box-shadow: 21px -19px 0px -8px rgba(0, 0, 0, 0.884);
+  -moz-box-shadow: 21px -19px 0px -8px rgba(0, 0, 0, 0.884) ;
+  box-shadow: 21px -19px 0px -8px rgba(0, 0, 0, 0.884);
 
 }
 
