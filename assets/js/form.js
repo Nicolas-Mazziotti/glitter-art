@@ -1,121 +1,133 @@
-// import sgMail from '@sendgrid/mail';
-// sgMail.setApiKey(process.env.SENDGRID_API_KEY);
-
 
 const form = document.querySelector('.contact-form');
 console.log(form)
-const nameInput = document.querySelector('#name');
-const emailInput = document.querySelector('#email');
-const numberInput = document.querySelector('#number')
-const dateInput = document.querySelector('#date');
-const placeInput = document.querySelector('#place');
-const packsInput = document.querySelector('#packs');
-const btnSubmit = document.getElementById('btn-submit')
+const inputs = document.querySelectorAll('.contact-form .form-control')
+console.log(inputs)
+const nameInput = document.getElementById('input_name');
+const emailInput = document.getElementById('input_email');
+const numberInput = document.getElementById('input_number')
+const dateInput = document.getElementById('input_date');
+const placeInput = document.getElementById('input_place');
+const packsInput = document.getElementById('input_packs');
+const btnSubmit = document.getElementById('input_btn-submit')
 
 
-// Función para validar el formulario
-const validateForm = (e) => {
-  // e.preventDefault() // Evita que se envíe el formulario automáticamente
-  console.log('hola1')
-  let isValid = true;
-  
-  // // Validación nombre
-  if (nameInput.value.trim() === '') {
-    isValid = false;
-    nameInput.classList.add('is-invalid');
-  } else {
-    nameInput.classList.remove('is-invalid');
-  }
-  
-  // // Validación correo electrónico
-  if (emailInput.value.trim() === '') {
-    isValid = false;
-    emailInput.classList.add('is-invalid');
-  } else {
-    emailInput.classList.remove('is-invalid');
-  }
-  
-  // // Validación fecha del evento
-  if (dateInput.value.trim() === '') {
-    isValid = false;
-    dateInput.classList.add('is-invalid');
-  } else {
-    dateInput.classList.remove('is-invalid');
-  }
-  
-  // // Validación lugar del evento
-  if (placeInput.value.trim() === '') {
-    isValid = false;
-    placeInput.classList.add('is-invalid');
-  } else {
-    placeInput.classList.remove('is-invalid');
-  }
-  
-  // // Validación  pack a contratar
-  const packsNotification = document.querySelector('.packs_notification')
-  if (packsInput.value === 'Desplegar Opciones') {
-    isValid = false;
-    console.log(packsNotification)
-    packsInput.classList.add('is-invalid');
-    packsNotification.classList.remove('visually-hidden')
-    btnSubmit.disabled 
+//Expresiones Regulares para el formulario de Componentes
+let expresions = {
+  name: /^[ a-zA-ZñÑáéíóúÁÉÍÓÚ]{1,50}$/, //Regex solo letras y espacio
+  email: /^([a-zA-Z0-9_\-.]+)@([a-zA-Z0-9_\-.]+)\.([a-zA-Z]{2,5})$/,// Formate fecha dd/mm/aaaa
+  number: /^[0-9]{5,20}$/,
+  date: /\d{4}-\d{2}-\d{2}/,
+  place: /^[ a-zA-ZñÑáéíóúÁÉÍÓÚ/,]{1,50}$/,
+  packs: /^[ a-zA-ZñÑáéíóúÁÉÍÓÚ]{1,50}$/,
+};
 
-  } else {
-        packsInput.classList.remove('is-invalid')
-        packsInput.classList.remove('invalid-feedback');
-        
-          }
-  packsInput.addEventListener('change', function() {
-    if (this.value !== 'Desplegar Opciones') {
-      this.classList.remove('is-invalid');
-      packsNotification.classList.add('visually-hidden')
+//Funcion para validar inputs sin desplegable del Formulario 
+let validacionCorrecta = true;
+const validarFormulario = (e) => {
+    switch (e.target.name) {
+        case "name":
+            validarInputs(expresions.name, e.target, 'name')
+            break;
+        case "email":
+            validarInputs(expresions.email, e.target, 'email')
+            break;
+        case "number":
+            validarInputs(expresions.number, e.target, 'number')
+            break;
+        case "date":
+            validarInputs(expresions.date, e.target, 'date')
+            break;
+        case "place":
+            validarInputs(expresions.place, e.target, 'place')
+            break;
+        case "packs":
+          console.log('pack')
+            validarInputs(expresions.packs, e.target, 'packs')
+            break;
     }
-  });
-  getFormValues()
-  form.reset()
+    if (e.target.classList.contains('is-invalid')) {
+        validacionCorrecta = false;
+    }
 }
 
+
+//Funcion para comparar regex con el valor del input agregando estilos (no desplegables)
+const validarInputs = (expresion, input, campo) => {
+    if (expresion.test(input.value) && !input.value.includes("Desplegar Opciones")) {
+        document.getElementById(`input_${campo}`).classList.remove('is-invalid')
+        document.getElementById(`input_${campo}`).classList.add('is-valid')
+        document.getElementById(`notificacion_${campo}`).classList.add('visually-hidden')
+    }
+    else {
+        document.getElementById(`input_${campo}`).classList.add('is-invalid')
+        document.getElementById(`notificacion_${campo}`).classList.remove('visually-hidden')
+    }
+}
+
+
+// let firbaseRef = firebase.da
 let arrValues = [];
-console.log(arrValues)
-const getFormValues = () => {
+// Función para validar el formulario
+const sendForm = (e) => {
+e.preventDefault()
   const name = nameInput.value
   const email = emailInput.value
   const number = numberInput.value
   const date = dateInput.value
   const place = placeInput.value
   const pack = packsInput.value
-  arrValues.push({ name, email, date, place, pack })
+  arrValues.push({ name, email, date, place, pack, number })
   console.log(arrValues)
+  validacionCorrecta = true;
+  inputs.forEach((input) => {
+      validarFormulario({ target: input });
+  })
+  if (!validacionCorrecta) {
+      e.preventDefault();
+      const invalidInputs = document.querySelectorAll('.is-invalid');
+      console.log(invalidInputs)
+      invalidInputs[0].scrollIntoView({ behavior: "smooth" });
+  } else {
+      sendEmailjs(arrValues)
+}
+}
+
+
+const sendEmailjs = (arrValues) => {
+
+    console.log(arrValues)
+    const inputValues = arrValues.map((inputValue) => {
+        console.log(inputValue)
+        return inputValue
+    })
+    const params = {
+        nombre: `${inputValues[0].name}`,
+        email: `${inputValues[0].email}`,
+        telefono: `${inputValues[0].number}`,
+        fecha: `${inputValues[0].date}`,
+        lugar: `${inputValues[0].place}`,
+        pack: `${inputValues[0].pack}`,
+    }
+    console.log(params)
+    emailjs.send("service_w7zlwim","template_kbc289l", params)
+	.then(function(response) {
+	   console.log('SUCCESS!', response.status, response.text);
+	}, function(err) {
+	   console.log('FAILED...', err);
+	});
 
 }
 
 
-//Sendgrid Config
 
-// const msg = {
-//   to: `${sgMail.setApiKey(process.env.FROM_EMAIL)}`,
-//   from: `xfasfa@gmail.com`, // Use the email address or domain you verified above
-//   subject: 'Sending with Twilio SendGrid is Fun',
-//   text: 'and easy to do anywhere, even with Node.js',
-//   html: '<strong>and easy to do anywhere, even with Node.js</strong>',
-// };
-
-// (async () => {
-//   try {
-//     await sgMail.send(msg);
-//   } catch (error) {
-//     console.error(error);
-
-//     if (error.response) {
-//       console.error(error.response.body)
-//     }
-//   }
-// })();
 
 
 // document.querySelector('#btn-submit').addEventListener('click', validateForm);
-form.addEventListener('submit', (e) => {
-  e.preventDefault()
-  validateForm()
-});
+form.addEventListener('submit', sendForm)
+
+inputs.forEach((input) => {
+  input.addEventListener('keyup', validarFormulario)
+  input.addEventListener('change', validarFormulario)
+})
 

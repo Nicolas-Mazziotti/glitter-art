@@ -1,13 +1,15 @@
 
 /*Variables*/
+/* --primary-text-color: #4d6321;
+--secondary-text-color: #3f4d21; */
+/* --icon-color: #00c853; */
 :root{
-  --primary-text-color: #4d6321;
-  --secondary-text-color: #3f4d21;
+  --primary-text-color: black;
+  --secondary-text-color: black;
   --primary-background-color: #FFE9ED;
   /* --icon-color: #20671E; */
-  --icon-color: #00c853;
-  --test-color-icons: #f3d31f;
-  --test-text-color: black;
+  --icon-color: #CD5C5C;
+  --secondary-background-color: #AA3344;
 }
 
 /*-----General*-----*/
@@ -493,11 +495,11 @@ h6 {
   border-radius: 50px;
   transition: 0.5s;
   color: #fff;
-  background: var(--primary-text-color);
+  background: var(--icon-color);
 }
 
 #hero .btn-get-started:hover {
-  background: var(--secondary-text-color) ;
+  background: var(--secondary-background-color) ;
 }
 
 @media only screen and (min-width: 1024px){
@@ -510,12 +512,34 @@ h6 {
   width: 400px;
   border-radius: 30px;
   opacity: 0.9;
-  /* -webkit-box-shadow: 21px -19px 0px -8px rgba(63,77,33,0.67);
+  -webkit-box-shadow: 21px -19px 0px -8px rgba(63,77,33,0.67);
   -moz-box-shadow: 21px -19px 0px -8px rgba(63,77,33,0.67);
-  box-shadow: 21px -19px 0px -8px rgba(63,77,33,0.67); */
+  box-shadow: 21px -19px 0px -8px rgba(63,77,33,0.67);
 
 }
 
+
+
+#hero #art {
+  position: absolute;
+  /* font-weight: bold; */
+  animation: pendulum 3s ease-in-out infinite;
+  transform-origin: center bottom;
+
+  
+}
+
+@keyframes pendulum {
+  0% {
+    transform: rotate(20deg);
+  }
+  50% {
+    transform: rotate(-10deg);
+  }
+  100% {
+    transform: rotate(20deg);
+  }
+}
 
 /* #hero .animated {
   animation: up-down 2s ease-in-out infinite alternate-reverse both;
@@ -849,8 +873,8 @@ section {
 }
 
 .about .icon-box:hover .icon {
-  background: #20671E;
-  border-color: #20671E;
+  background: var(--secondary-background-color);
+  border-color: var(--secondary-background-color);
 }
 
 .about .icon-box:hover .icon i {
@@ -1228,7 +1252,7 @@ section {
 }
 
 .contact .contact-form button[type=submit] {
-  background: var(--primary-text-color);
+  background: var(--icon-color);
   border: 0;
   padding: 10px 30px;
   color: #fff;
@@ -1237,7 +1261,7 @@ section {
 }
 
 .contact .contact-form button[type=submit]:hover {
-  background: var(--secondary-text-color);
+  background: var(--secondary-background-color);
 }
 
 @-webkit-keyframes animate-loading {
