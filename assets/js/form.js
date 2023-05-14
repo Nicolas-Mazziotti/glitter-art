@@ -42,7 +42,6 @@ const validarFormulario = (e) => {
             validarInputs(expresions.place, e.target, 'place')
             break;
         case "packs":
-          console.log('pack')
             validarInputs(expresions.packs, e.target, 'packs')
             break;
     }
@@ -77,6 +76,7 @@ e.preventDefault()
   const date = dateInput.value
   const place = placeInput.value
   const pack = packsInput.value
+  console.log(pack)
   arrValues.push({ name, email, date, place, pack, number })
   console.log(arrValues)
   validacionCorrecta = true;
@@ -90,38 +90,40 @@ e.preventDefault()
       invalidInputs[0].scrollIntoView({ behavior: "smooth" });
   } else {
         sendEmailjs(arrValues);
-    };  
+        const liveToast = document.getElementById('live_toast')
+        const toastBootstrap = bootstrap.Toast.getOrCreateInstance(liveToast)
+        
+        toastBootstrap.show()
+        form.reset()
+        inputs.forEach((input) => {
+            input.classList.remove('is-valid') 
+        });
+    }
 }
-
 
 
 
 const sendEmailjs = (arrValues) => {
 
-    console.log(arrValues)
-    const inputValues = arrValues.map((inputValue) => {
-        console.log(inputValue)
-        return inputValue
-    })
-    const params = {
-        nombre: `${inputValues[0].name}`,
-        email: `${inputValues[0].email}`,
-        telefono: `${inputValues[0].number}`,
-        fecha: `${inputValues[0].date}`,
-        lugar: `${inputValues[0].place}`,
-        pack: `${inputValues[0].pack}`,
-    }
-    console.log(params)
-    emailjs.send("service_w7zlwim","template_kbc289l", params)
-	.then(function(response) {
-	   console.log('SUCCESS!', response.status, response.text);
-	}, function(err) {
-	   console.log('FAILED...', err);
+    arrValues.forEach((inputValues, index) => {
+      console.log(inputValues)
+      const params = {
+        name: `${inputValues.name}`,
+            email: `${inputValues.email}`,
+            number: `${inputValues.number}`,
+            date: `${inputValues.date}`,
+            place: `${inputValues.place}`,
+            packs: `${inputValues.pack}`,
+      }
+      console.log(params)
+      emailjs.send("service_w7zlwim","template_kbc289l", params)
+      .then(function() {
+        console.log('SUCCESS!');
+    }, function(error) {
+        console.log('FAILED...', error);
 	});
-
-}
-
-
+    })
+  }
 
 
 

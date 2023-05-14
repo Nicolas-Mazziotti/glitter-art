@@ -562,18 +562,27 @@
                 <span id="notificacion_packs" class="visually-hidden">Elige un pack válido</span>
               </div>
 
-
-              <div id="message_form"></div>
+              <!-- TOAST -->
+              <div id="live_toast"class="toast align-items-center text-bg-danger border-0 position-absolute" role="alert" aria-live="assertive" aria-atomic="true">
+                <div class="d-flex">
+                  <div class="toast-body">
+                    Gracias por su solicitud, nos contactaremos cuanto antes. 
+                  </div>
+                  <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+                </div>
+              </div>
+              <!-- END TOAST -->
               <div class="text-center"><button type="submit" id="btn-submit">Enviar Mensaje</button></div>
-              <!-- <span class="spinner-border text-dark" role="status"> -->
-              </span>
+
             </form>
           </div>
         </div>
       </div>
+
     </section><!-- End Contact Section -->
 
   </main><!-- End #main -->
+
 
   <!-- ======= Footer ======= -->
   <footer id="footer">
