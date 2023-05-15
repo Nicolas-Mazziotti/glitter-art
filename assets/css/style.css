@@ -109,7 +109,7 @@ h6 {
 }
 
 .back-to-top:hover {
-  background: var(--icon-color);
+  /* background: var(--icon-color); */
   color: #fff;
 }
 
@@ -1252,7 +1252,7 @@ section {
 }
 
 .contact .contact-form button[type=submit] {
-  background: var(--icon-color);
+  background: rgb(248, 152, 168);
   border: 0;
   padding: 10px 30px;
   color: #fff;
