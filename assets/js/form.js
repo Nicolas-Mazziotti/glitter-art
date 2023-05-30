@@ -18,7 +18,7 @@ let expresions = {
   email: /^([a-zA-Z0-9_\-.]+)@([a-zA-Z0-9_\-.]+)\.([a-zA-Z]{2,5})$/,// Formate fecha dd/mm/aaaa
   number: /^[0-9]{5,20}$/,
   date: /\d{4}-\d{2}-\d{2}/,
-  place: /^[ a-zA-ZñÑáéíóúÁÉÍÓÚ/,]{1,50}$/,
+  place: /^[ a-zA-ZñÑáéíóúÁÉÍÓÚ/,0-9]{1,50}$/,
   packs: /^[ a-zA-ZñÑáéíóúÁÉÍÓÚ]{1,50}$/,
 };
 

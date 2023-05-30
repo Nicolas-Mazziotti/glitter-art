@@ -1205,11 +1205,13 @@ section {
 }
 
 .contact .info .email,
+.contact .info .map,
 .contact .info .phone {
   margin-top: 40px;
 }
 
 .contact .info .email:hover i,
+.contact .info .map:hover i,
 .contact .info .address:hover i,
 .contact .info .phone:hover i {
   background: var(--icon-color);
@@ -1262,6 +1264,11 @@ section {
 
 .contact .contact-form button[type=submit]:hover {
   background: var(--secondary-background-color);
+}
+
+#form-emailjs span {
+  color:red;
+  font-size: 14px;
 }
 
 @-webkit-keyframes animate-loading {
